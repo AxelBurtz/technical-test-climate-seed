@@ -1,6 +1,8 @@
 class Project < ApplicationRecord
 
   has_many :vintages
+  has_many :project_offerings
+  has_many :sellers, through: :project_offerings
 
   validates :name, presence: true
   validates :registry_name, inclusion: { in: ['Verra', 'Gold Standard', 'Plan Vivo'] }
