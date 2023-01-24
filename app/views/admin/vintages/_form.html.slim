@@ -1,0 +1,15 @@
+= form_for [:admin, @vintage] do |f|
+
+  fieldset
+    header: h3 Vintage Content
+
+    .field
+      = f.label :project_id
+      = f.select :project_id, options_for_select(Project.pluck(:name, :id))
+
+    .field
+      = f.label :name
+      = f.text_field :name
+
+    .actions
+      = f.submit "Submit"

@@ -1,0 +1,12 @@
+nav.util
+  ul
+    li
+      = link_to 'Back', admin_vintages_path, class: "btn"
+
+  h2 = "View #{@vintage.name}"
+
+  p = @vintage.project.name
+  p = @vintage.project.registry_name
+  p = @vintage.project.country
+  p = @vintage.project.typology
+  p = @vintage.project.is_validated

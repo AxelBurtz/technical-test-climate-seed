@@ -1,0 +1,24 @@
+nav.util
+  ul
+    li
+      = link_to 'New Vintage', new_admin_vintage_path, class: "btn"
+
+header
+  h3 Manage Vintages
+
+table
+  thead
+    tr
+      th.header Project Id
+      th.header Name
+
+  tbody
+    - @vintages.each do |vintage|
+      tr
+        td.col = vintage.project_id
+        td.col = vintage.name
+        td.col = link_to 'View', admin_vintage_path(vintage.id), class: 'btn btn-primary'
+        td.col = link_to 'Edit', edit_admin_vintage_path(vintage.id), class: "btn btn-primary"
+        td.col
+          = form_for :vintage, url: admin_vintage_path(vintage.id), method: :delete, html: { data: { confirm: 'Are you sure?' } } do |f|
+            = f.submit 'Delete', class: "btn btn-primary"
