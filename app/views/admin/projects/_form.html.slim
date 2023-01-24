@@ -1,0 +1,27 @@
+= form_for [:admin, @project] do |f|
+
+  fieldset
+    header: h3 Project Content
+
+    .field
+      = f.label :name
+      = f.text_field :name
+
+    .field
+      = f.label :registry_name
+      = f.select :registry_name, ['Verra', 'Gold Standard', 'Plan Vivo']
+
+    .field
+      = f.label :country
+      = f.text_field :country
+
+    .field
+      = f.label :typology
+      = f.select :typology, ['forestry', 'cookstoves', 'water purifiers']
+
+    .field
+      = f.label :is_validated
+      = f.check_box :is_validated
+
+    .actions
+      = f.submit "Submit"

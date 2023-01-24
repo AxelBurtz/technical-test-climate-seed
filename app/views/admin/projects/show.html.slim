@@ -1,0 +1,11 @@
+nav.util
+  ul
+    li
+      = link_to 'Back', admin_projects_path, class: "btn"
+
+  h2 = "View #{@project.name}"
+
+  p = @project.registry_name
+  p = @project.country
+  p = @project.typology
+  p = @project.is_validated
