@@ -1,0 +1,21 @@
+nav.util
+  ul
+    li
+      = link_to 'New Buyer', new_admin_buyer_path, class: "btn"
+
+header
+  h3 Manage Buyers
+
+table
+  thead
+    tr
+      th.header Name
+
+  tbody
+    - @buyers.each do |buyer|
+      tr
+        td.col = buyer.name
+        td.col = link_to 'Edit', edit_admin_buyer_path(buyer.id), class: "btn btn-primary"
+        td.col
+          = form_for :buyer, url: admin_buyer_path(buyer.id), method: :delete, html: { data: { confirm: 'Are you sure?' } } do |f|
+            = f.submit 'Delete', class: "btn btn-primary"

@@ -1,0 +1,21 @@
+nav.util
+  ul
+    li
+      = link_to 'New Seller', new_admin_seller_path, class: "btn"
+
+header
+  h3 Manage Sellers
+
+table
+  thead
+    tr
+      th.header Name
+
+  tbody
+    - @sellers.each do |seller|
+      tr
+        td.col = seller.name
+        td.col = link_to 'Edit', edit_admin_seller_path(seller.id), class: "btn btn-primary"
+        td.col
+          = form_for :seller, url: admin_seller_path(seller.id), method: :delete, html: { data: { confirm: 'Are you sure?' } } do |f|
+            = f.submit 'Delete', class: "btn btn-primary"

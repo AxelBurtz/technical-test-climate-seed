@@ -1,0 +1,11 @@
+= form_for [:admin, @seller] do |f|
+
+  fieldset
+    header: h3 Seller Content
+
+    .field
+      = f.label :name
+      = f.text_field :name
+
+    .actions
+      = f.submit "Submit"
