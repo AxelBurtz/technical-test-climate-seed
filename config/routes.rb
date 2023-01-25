@@ -17,8 +17,8 @@ Rails.application.routes.draw do
   end
 
   # buyer
+  resources :carbon_credits, only: %i[index]
   namespace :buyer do
-
   end
 
   # seller

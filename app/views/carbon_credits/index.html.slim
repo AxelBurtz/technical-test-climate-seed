@@ -1,0 +1,25 @@
+nav.util
+
+header
+  h3 See list of Project Offering
+
+
+table
+  tr
+    th.header Project Name
+    th.header Project Description
+    th.header Seller Name
+    th.header Vintage Name
+    th.header Available Vintage Quantity
+    th.header Vintage Price
+  - @project_offerings.each do |project_offering|
+    tr
+      td.col = project_offering.project.name
+      td.col = project_offering.project_description
+      - project_offering.project.sellers.each do |seller|
+        td.row = seller.name
+      - project_offering.project.vintages.each do |vintage|
+        td.col = vintage.name
+        - vintage.vintage_offerings.each do |vintage_offering|
+          td.col = vintage_offering.available_credits
+          td.col = vintage_offering.price
