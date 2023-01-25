@@ -21,7 +21,9 @@ Rails.application.routes.draw do
   end
 
   # seller
-  namespace :seller do
+  resources :sellers, only: %i[index]
+  resources :project_offerings
+  post '/seller/check_name' => 'sellers#check_name', as: :check_name
+  resources :vintage_offerings
 
-  end
 end
