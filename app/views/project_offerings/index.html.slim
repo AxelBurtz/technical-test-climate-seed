@@ -1,0 +1,27 @@
+nav.util
+  ul
+    li
+      = link_to 'New Project Offering', new_project_offering_path, class: "btn"
+
+header
+  h3 Manage Project Offering
+
+table
+  thead
+    tr
+      th.header Seller Name
+      th.header Project Name
+      th.header Project Description
+      th.header Status
+
+  tbody
+    - @project_offerings.each do |project_offering|
+      tr
+        td.col = project_offering.seller.name
+        td.col = project_offering.project.name
+        td.col = project_offering.project_description
+        td.col = project_offering.status
+        td.col = link_to 'Edit', edit_project_offering_path(project_offering.id), class: "btn btn-primary"
+        td.col
+          = form_for :project_offering, url: project_offering_path(project_offering.id), method: :delete, html: { data: { confirm: 'Are you sure?' } } do |f|
+            = f.submit 'Delete', class: "btn btn-primary"

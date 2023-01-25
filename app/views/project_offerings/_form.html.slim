@@ -1,0 +1,22 @@
+= form_for @project_offering do |f|
+
+  fieldset
+    header: h3 Project Content
+
+    .field
+      = f.label :project_description
+      = f.text_field :project_description
+
+    .field
+      = f.label :project_id
+      = f.select :project_id, options_for_select(Project.where(is_validated: true).pluck(:name, :id))
+
+    .field
+      = f.label :status
+      = f.select :status, ['requested', 'rejected', 'validated']
+
+    .field
+      = f.hidden_field :seller_id, value: Seller.find_by(name: current_user.name).id
+
+    .actions
+      = f.submit "Submit"
