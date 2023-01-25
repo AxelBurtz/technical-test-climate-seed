@@ -18,8 +18,7 @@ Rails.application.routes.draw do
 
   # buyer
   resources :carbon_credits, only: %i[index]
-  namespace :buyer do
-  end
+  resources :contributions, only: %i[new create]
 
   # seller
   resources :sellers, only: %i[index]

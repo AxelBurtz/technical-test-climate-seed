@@ -1,0 +1,33 @@
+nav.util
+  ul
+    li
+      = link_to 'Back', carbon_credits_path, class: "btn"
+    li
+      span Creating a new contributions
+
+= form_for @contribution do |f|
+
+  fieldset
+    header: h3 Contribution Content
+
+    .field
+      = f.label :vintage_id
+      = f.select :vintage_id, options_for_select(Vintage.all.pluck(:name, :id))
+
+    .field
+      = f.label :seller_id
+      = f.select :seller_id, options_for_select(Seller.all.pluck(:name, :id))
+
+    .field
+      = f.label :credits_quantity
+      = f.number_field :credits_quantity
+
+    .field
+      = f.label :price
+      = f.number_field :price
+
+    .field
+      = f.hidden_field :buyer_id, value: Buyer.find_by(name: current_user.name).id
+
+    .actions
+      = f.submit 'Submit'
