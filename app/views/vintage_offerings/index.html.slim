@@ -1,0 +1,29 @@
+nav.util
+  ul
+    li
+      = link_to 'New Vintage Offering', new_vintage_offering_path, class: "btn"
+
+header
+  h3 Manage Vintage Offering
+
+table
+  thead
+    tr
+      th.header Seller Name
+      th.header Project Name
+      th.header Vintage Name
+      th.header Available Credits
+      th.header Price
+
+  tbody
+    - @vintage_offerings.each do |vintage_offering|
+      tr
+        td.col = vintage_offering.seller.name
+        td.col = vintage_offering.project.name
+        td.col = vintage_offering.vintage.name
+        td.col = vintage_offering.available_credits
+        td.col = vintage_offering.price
+        td.col = link_to 'Edit', edit_vintage_offering_path(vintage_offering.id), class: "btn btn-primary"
+        td.col
+          = form_for :vintage_offering, url: vintage_offering_path(vintage_offering.id), method: :delete, html: { data: { confirm: 'Are you sure?' } } do |f|
+            = f.submit 'Delete', class: "btn btn-primary"
