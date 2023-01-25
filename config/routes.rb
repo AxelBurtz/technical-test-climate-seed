@@ -13,6 +13,7 @@ Rails.application.routes.draw do
     resources :vintages
     resources :sellers, only: %i[index new create edit update destroy]
     resources :buyers
+    resources :vintage_offerings, only: %i[index]
   end
 
   # buyer

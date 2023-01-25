@@ -7,7 +7,7 @@ class VintageOfferingPolicy < ApplicationPolicy
   end
 
   def index?
-    user.is_seller
+    user.is_seller || user.is_admin
   end
 
   def new?

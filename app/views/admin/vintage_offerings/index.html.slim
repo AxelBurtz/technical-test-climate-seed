@@ -1,0 +1,23 @@
+nav.util
+
+
+header
+  h3 See Vintage offerings
+
+table
+  thead
+    tr
+      th.header Seller Name
+      th.header Project Name
+      th.header Vintage Name
+      th.header Available Quantity
+      th.header Price
+
+  tbody
+    - @vintage_offerings.each do |vintage_offering|
+      tr
+        td.col = vintage_offering.seller.name
+        td.col = vintage_offering.project.name
+        td.col = vintage_offering.vintage.name
+        td.col = vintage_offering.available_credits
+        td.col = vintage_offering.price
