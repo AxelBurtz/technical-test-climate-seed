@@ -11,6 +11,10 @@
         <%= link_to 'Sellers', admin_sellers_path, class: 'btn btn-primary' %>
         <%= link_to 'Buyers', admin_buyers_path, class: 'btn btn-primary' %>
       <% end %>
+      <% if current_user.is_seller %>
+        <%= link_to 'Project offering', project_offerings_path, class: 'btn btn-primary' %>
+        <%= link_to 'Vintage offering', vintage_offerings_path, class: 'btn btn-primary' %>
+      <% end %>
     <% end %>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
