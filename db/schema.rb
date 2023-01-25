@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_01_24_233246) do
+ActiveRecord::Schema[7.0].define(version: 2023_01_25_014117) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -61,6 +61,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_01_24_233246) do
     t.string "name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "vintage_offerings", force: :cascade do |t|
+    t.integer "seller_id"
+    t.integer "vintage_id"
+    t.integer "project_id"
+    t.integer "available_credits"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_vintage_offerings_on_project_id"
+    t.index ["seller_id"], name: "index_vintage_offerings_on_seller_id"
+    t.index ["vintage_id"], name: "index_vintage_offerings_on_vintage_id"
   end
 
   create_table "vintages", force: :cascade do |t|
