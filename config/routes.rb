@@ -22,7 +22,11 @@ Rails.application.routes.draw do
 
   # seller
   resources :sellers, only: %i[index]
-  resources :project_offerings
+  resources :project_offerings do
+    member do
+      patch :update_status
+    end
+  end
   post '/seller/check_name' => 'sellers#check_name', as: :check_name
   resources :vintage_offerings
 

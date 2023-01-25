@@ -1,5 +1,5 @@
 class ProjectOfferingsController < ApplicationController
-  before_action :set_project_offering, only: %i[edit update destroy]
+  before_action :set_project_offering, only: %i[edit update destroy update_status]
 
 
   def index
@@ -45,6 +45,11 @@ class ProjectOfferingsController < ApplicationController
     redirect_to project_offerings_path, notice: 'Project Offering was successfully destroyed.'
   end
 
+  def update_status
+    @project_offering.update(status: params[:project_offering][:status])
+    redirect_to admin_projects_path
+  end
+
   private
 
   def set_project_offering
@@ -53,5 +58,9 @@ class ProjectOfferingsController < ApplicationController
 
   def project_offering_params
     params.require(:project_offering).permit(:project_id, :seller_id, :project_description, :status)
+  end
+
+  def status_params
+    params.require(:projec_offering).permit(:status)
   end
 end

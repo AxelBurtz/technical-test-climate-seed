@@ -27,3 +27,11 @@ table
         td.col
           = form_for :project, url: admin_project_path(project.id), method: :delete, html: { data: { confirm: 'Are you sure?' } } do |f|
             = f.submit 'Delete', class: "btn btn-primary"
+        - if project.project_offerings.present?
+          - project.project_offerings.each do |project_offering|
+            td.col = project_offering.project_description
+            td.col
+              = form_for :project_offering, url: update_status_project_offering_path(project_offering), method: :patch do |f|
+                  = f.select :status, options_for_select([['Validate', 'validated'], ['Reject', 'rejected']])
+                  = f.submit 'Save'
+            td.col = project_offering.status
