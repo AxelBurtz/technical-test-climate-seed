@@ -7,7 +7,7 @@ class SellerPolicy < ApplicationPolicy
   end
 
   def index?
-    user.is_admin
+    user.is_admin || user.is_seller
   end
 
   def new?
