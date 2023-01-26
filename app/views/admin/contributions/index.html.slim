@@ -1,0 +1,31 @@
+nav.util
+  ul
+    / li
+    /   = link_to 'New Project', new_admin_project_path, class: "btn"
+
+header
+  h3 Manage Projects
+
+table
+  thead
+    tr
+      th.header Buyer Name
+      th.header Seller Name
+      th.header Project Name
+      th.header Vintage Name
+      th.header Credits Quantity
+      th.header Price
+  tbody
+    - @contributions.each do |contribution|
+      tr
+        td.col = contribution.buyer.name
+        td.col = contribution.seller.name
+        td.col = contribution.vintage.project.name
+        td.col = contribution.vintage.name
+        td.col = contribution.credits_quantity
+        td.col = contribution.price
+        td.col
+          = form_for :contribution, url: update_status_admin_contribution_path(contribution), method: :patch do |f|
+              = f.select :status, options_for_select([['Validate', 'validated'], ['Reject', 'rejected']])
+              = f.submit 'Save'
+        td.col = contribution.status
