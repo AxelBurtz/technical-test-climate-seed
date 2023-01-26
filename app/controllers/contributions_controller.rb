@@ -19,6 +19,6 @@ class ContributionsController < ApplicationController
   private
 
   def contribution_params
-    params.require(:contribution).permit(:buyer_id, :seller_id, :vintage_id, :credits_quantity, :price)
+    params.require(:contribution).permit(:buyer_id, :seller_id, :vintage_id, :credits_quantity, :price, :status)
   end
 end

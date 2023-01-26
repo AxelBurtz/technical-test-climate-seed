@@ -27,6 +27,10 @@ nav.util
       = f.number_field :price
 
     .field
+      = f.label :status
+      = f.select :status, ['requested']
+
+    .field
       = f.hidden_field :buyer_id, value: Buyer.find_by(name: current_user.name).id
 
     .actions
